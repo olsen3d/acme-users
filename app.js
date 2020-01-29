@@ -1,6 +1,24 @@
 const userTable = document.querySelector('#users')
 const pageBar = document.querySelector('#pageBar')
 
+window.addEventListener('hashchange', () => {
+    const id = window.location.hash.slice(1);
+    fetch(`https://acme-users-api-rev.herokuapp.com/api/users/${id}`)
+        .then( response => response.json())
+        .then( result => {
+            renderUsers(result.users);
+        })
+})
+
+const id = window.location.hash.slice(1);
+if (id) {
+    fetch(`https://acme-users-api-rev.herokuapp.com/api/users/${id}`)
+        .then( response => response.json())
+        .then( result => {
+            renderUsers(result.users);
+        })
+}
+
 fetch('https://acme-users-api-rev.herokuapp.com/api/users')
     .then( response => response.json())
     .then( result => {
@@ -35,14 +53,13 @@ const renderUsers = (users) => {
 const pager = (count) => {
     pages = count / 50
     let pagesArray = []
-    for (let i = 1; i < pages; i++) {
+    for (let i = 0; i < pages; i++) {
         pagesArray.push(i)
     }
-    console.log(pagesArray)
 
     const html = pagesArray.map( page => {
         return `
-        <a href='${page}'>${page}</a>`
-    } )
+        <a href='#${page}'>${page+1}</a>`
+    } ).join('')
     pageBar.innerHTML = html
 }
