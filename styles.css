@@ -1,0 +1,29 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+table {
+    width: 100%;
+
+}
+
+tr {
+    display: flex;
+
+}
+
+th {
+    background-color: lightseagreen;
+    color: white;
+    flex: 1;
+    border-bottom: solid black 1px;
+    padding: 0.75rem;
+    text-align: left;
+}
+
+td {
+    flex: 1;
+    border-bottom: solid black 1px;
+    padding: 0.75rem;
+    text-align: left;
+}
