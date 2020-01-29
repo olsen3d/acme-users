@@ -42,7 +42,7 @@ const pager = (count) => {
 
     const html = pagesArray.map( page => {
         return `
-        <a href='${page}'>`
+        <a href='${page}'>${page}</a>`
     } )
     pageBar.innerHTML = html
 }
